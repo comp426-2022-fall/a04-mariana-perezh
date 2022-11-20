@@ -6,6 +6,9 @@ const app = express();
 import minimist from 'minimist';
 const args = minimist(process.argv.slice(2));
 
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+
 var port = 5000;
 if(args.port) {
 	port = args.port;
@@ -40,5 +43,8 @@ app.get('/app/roll/:sides/:dice/:rolls/', (req, res, next) => {
 	rolls = parseInt(req.params.rolls);
 	res.send(roll(sides, dice, rolls)).end();
 })
+
+app.use((req, res) => {
+	res.status(404).send("404 NOT FOUND").end();
 
 app.listen(port);
