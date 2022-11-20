@@ -22,8 +22,8 @@ app.get('/app/', (req, res) => {
 	res.send("200 OK");
 })
 
-app.get('/app/roll/', (req, res, next) => {
-	res.send(roll(sides, dice, rolls));
+app.use('/app/roll/', (req, res, next) => {
+	res.send(roll(sides, dice, rolls)).end();
 })
 
 app.get('/app/roll/:sides', (req, res, next) => {
