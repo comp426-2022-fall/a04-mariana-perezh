@@ -20,7 +20,7 @@ var rolls = 1;
 
 app.get('/app/', (req, res) => {
 	res.send("200 OK");
-}
+})
 
 app.get('/app/roll/', (req, res, next) => {
 	res.send(roll(sides, dice, rolls));
@@ -46,5 +46,6 @@ app.get('/app/roll/:sides/:dice/:rolls/', (req, res, next) => {
 
 app.use((req, res) => {
 	res.status(404).send("404 NOT FOUND").end();
+})
 
 app.listen(port);
